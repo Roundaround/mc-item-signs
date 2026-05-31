@@ -1,0 +1,8 @@
+classTweaker v1 official
+
+# Better Hanging Signs cleanup reads the held item off a hanging ItemDisplay
+# (BetterHangingSignsRemover#handleRoot). Display$ItemDisplay#getItemStack() is
+# private in vanilla; widen it so the loader-agnostic common code can call it.
+# Fabric: copied through as an accessWidener; NeoForge/Forge: translated to an
+# accesstransformer.cfg entry by Allay.
+accessible method net/minecraft/world/entity/Display$ItemDisplay getItemStack ()Lnet/minecraft/world/item/ItemStack;

@@ -1,6 +1,6 @@
 ![Item Signs](https://imgur.com/s81Fczu.png)
 
-![](https://img.shields.io/badge/Loader-Fabric-%23313e51?style=for-the-badge)
+![](https://img.shields.io/badge/Loader-Fabric%20|%20Forge%20|%20NeoForge-%23313e51?style=for-the-badge)
 ![](https://img.shields.io/badge/MC-26.1--26.1.2%20|%201.21-%23313e51?style=for-the-badge)
 ![](https://img.shields.io/badge/Side-Client%20&%20Server-%23313e51?style=for-the-badge)
 
