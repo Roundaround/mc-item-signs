@@ -10,14 +10,13 @@ allay {
   homepage.set("https://modrinth.com/mod/item-signs")
   repository.set("https://github.com/Roundaround/mc-fabric-item-signs")
   issues.set("https://github.com/Roundaround/mc-fabric-item-signs/issues")
+  logoFile.set("assets/itemsigns/banner.png")
 
   modrinth {
     projectId.set("item-signs")
   }
 
   curseforge {
-    // CurseForge numeric project id taken from the README download-tracker badge
-    // (img.shields.io/curseforge/dt/1501513). Verify against the CurseForge project page.
     projectId.set(1501513)
   }
 
