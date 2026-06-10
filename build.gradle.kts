@@ -8,8 +8,8 @@ allay {
   authors.set(listOf("Roundaround"))
   license.set("MIT")
   homepage.set("https://modrinth.com/mod/item-signs")
-  repository.set("https://github.com/Roundaround/mc-fabric-item-signs")
-  issues.set("https://github.com/Roundaround/mc-fabric-item-signs/issues")
+  repository.set("https://github.com/Roundaround/mc-item-signs")
+  issues.set("https://github.com/Roundaround/mc-item-signs/issues")
   logoFile.set("assets/itemsigns/banner.png")
 
   modrinth {
