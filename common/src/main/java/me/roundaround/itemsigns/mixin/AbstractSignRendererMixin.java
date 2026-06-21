@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.blockentity.state.SignRenderState;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
 import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
@@ -79,12 +80,16 @@ public abstract class AbstractSignRendererMixin {
     }
   }
 
-  @Inject(method = "submitSignWithText", at = @At(value = "RETURN"))
+  @Inject(
+      method = "submit(Lnet/minecraft/client/renderer/blockentity/state/SignRenderState;" +
+               "Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;" +
+               "Lnet/minecraft/client/renderer/state/level/CameraRenderState;)V", at = @At(value = "RETURN")
+  )
   protected void beforeMatrixStackPop(
       SignRenderState state,
       PoseStack poseStack,
-      ModelFeatureRenderer.CrumblingOverlay breakProgress,
       SubmitNodeCollector submitNodeCollector,
+      CameraRenderState cameraRenderState,
       CallbackInfo ci
   ) {
     this.itemsigns$renderItem(state, state.itemsigns$getFrontItemRenderState(), poseStack, submitNodeCollector, true);
