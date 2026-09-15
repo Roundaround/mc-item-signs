@@ -45,7 +45,7 @@ public abstract class ItemStackMixin {
 
     // If we ever get here, it means the player is holding an item and sneaking.
 
-    if (signBlockEntity.getText(signBlockEntity.isFacingFrontText(player)).hasMessage(player)) {
+    if (signBlockEntity.getText(signBlockEntity.getSlotPlayerIsFacing(player)).hasMessage(player.isTextFilteringEnabled())) {
       // If the sign currently has text, fall back to vanilla behavior.
       return callOriginal.get();
     }

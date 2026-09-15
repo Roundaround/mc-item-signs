@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.SignBlockEntity;
+import net.minecraft.world.level.block.entity.SignTextSlot;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import org.jetbrains.annotations.Nullable;
@@ -44,7 +45,7 @@ public abstract class SignBlockEntityMixin extends BlockEntity implements SignBl
   private SignItemsAttachment itemsigns$attachment = null;
 
   @Shadow
-  public abstract boolean isFacingFrontText(Player player);
+  public abstract SignTextSlot getSlotPlayerIsFacing(Player player);
 
   @Shadow
   protected abstract void markUpdated();
@@ -78,7 +79,7 @@ public abstract class SignBlockEntityMixin extends BlockEntity implements SignBl
 
   @Override
   public boolean itemsigns$hasItemFacingPlayer(Player player) {
-    return this.itemsigns$hasItem(this.isFacingFrontText(player));
+    return this.itemsigns$hasItem(this.getSlotPlayerIsFacing(player) == SignTextSlot.FRONT);
   }
 
   @Override
@@ -141,7 +142,7 @@ public abstract class SignBlockEntityMixin extends BlockEntity implements SignBl
 
   @Unique
   private int itemsigns$getItemIndex(Player player) {
-    return this.itemsigns$getItemIndex(this.isFacingFrontText(player));
+    return this.itemsigns$getItemIndex(this.getSlotPlayerIsFacing(player) == SignTextSlot.FRONT);
   }
 
   @Unique

@@ -39,8 +39,8 @@ public abstract class SignBlockMixin {
 
     // Should only get here if player is standing OR both hands are empty.
 
-    SignText signText = signBlockEntity.getText(signBlockEntity.isFacingFrontText(player));
-    if (signText.hasMessage(player)) {
+    SignText signText = signBlockEntity.getText(signBlockEntity.getSlotPlayerIsFacing(player));
+    if (signText.hasMessage(player.isTextFilteringEnabled())) {
       // If the sign currently has text, fall back to vanilla behavior.
       return callOriginal.get();
     }
