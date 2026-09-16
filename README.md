@@ -1,27 +1,37 @@
 ![Item Signs](https://imgur.com/s81Fczu.png)
 
-![](https://img.shields.io/badge/Loader-Fabric%20|%20Forge%20|%20NeoForge-313e51?style=for-the-badge)
-![](https://img.shields.io/badge/MC-26.3%20|%2026.2%20|%2026.1%20|%201.21-313e51?style=for-the-badge)
-![](https://img.shields.io/badge/Side-Client%20&%20Server-313e51?style=for-the-badge)
-
 [![Modrinth Downloads](https://img.shields.io/modrinth/dt/item-signs?style=flat&logo=modrinth&color=00AF5C)](https://modrinth.com/mod/item-signs)
 [![CurseForge Downloads](https://img.shields.io/curseforge/dt/1501513?style=flat&logo=curseforge&color=F16436)](https://www.curseforge.com/minecraft/mc-mods/item-signs)
 [![GitHub Repo stars](https://img.shields.io/github/stars/Roundaround/mc-item-signs?style=flat&logo=github)](https://github.com/Roundaround/mc-item-signs)
 
 [![Support me on Ko-fi](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/donate/kofi-singular-alt_vector.svg)](https://ko-fi.com/roundaround)
 
----
+Place items into signs the same way you can with item frames — every material, hanging and freestanding.
 
-Place items into signs the same way you can with item frames! Works for signs of all materials, including both hanging and freestanding varieties!
+## Installing
 
-![Screenshot](https://cdn.modrinth.com/data/dwFQ8OlO/images/24522cef8dd0bf8046be82f6a384c625d70e915e.png)
+Grab a build from [Modrinth](https://modrinth.com/mod/item-signs) or [CurseForge](https://www.curseforge.com/minecraft/mc-mods/item-signs). Fabric builds need [Fabric API](https://modrinth.com/mod/fabric-api).
 
-## Compatibility
+## Building from source
 
-### Enhanced Block Entities [🔗](https://modrinth.com/mod/ebe)
+```sh
+./gradlew build
+```
 
-This mod comes with a compatibility hook for Enhanced Block Entities, disabling its "Enhanced Signs" configuration option, as it takes away the ability to render the mounted items. If the hook ever doesn't work automatically and your items are invisible, check EBE's configuration and make sure it is leaving signs alone!
+Dev runs are per loader: `:fabric:runClient`, `:neoforge:runClient`, `:forge:runClient`, and the `runServer` equivalents. Game tests run with `./gradlew :fabric:runClientGameTests` and `:fabric:runServerGameTests`.
 
-### KetKet's Better Hanging Signs [🔗](https://modrinth.com/datapack/better-hanging-signs)
+The build is an [Allay](https://github.com/Roundaround/allay) consumer and bundles [Trove](https://github.com/Roundaround/trove).
 
-If you're coming from KetKet's Better Hanging Signs datapack, you might be pleased to hear it works perfectly fine next to this mod. _More importantly_, if you want to migrate off the datapack to use this mod exclusively, (as of v1.1.0) this mod will detect the absence of the datapack and clean up after it automatically! If a sign still exists and you haven't placed items on it via this mod yet, it'll transfer the items directly onto the mod while it cleans up the invisible entities spawned by the datapack. If it can't find a sign or there aren't enough slots available, it'll drop the old items on the floor and notify you in chat!
+Shared code lives in `common/` and is added to each loader subproject via `srcDir`.
+
+## Contributing
+
+Issues and pull requests are welcome at [the issue tracker](https://github.com/Roundaround/mc-item-signs/issues).
+
+- Branch from `main`, which tracks the newest supported Minecraft version. Older lines live on their own version-named branches.
+- Keep loader-agnostic code in `common/`; only genuinely loader-specific glue belongs in a loader subproject.
+- Run `./gradlew build` plus the Fabric game tests before opening a PR, and add a changelog entry under `changelogs/` named for the version you're targeting.
+
+## License
+
+[MIT](LICENSE)
