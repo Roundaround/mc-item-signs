@@ -12,6 +12,10 @@ allay {
   issues.set("https://github.com/Roundaround/mc-item-signs/issues")
   logoFile.set("assets/itemsigns/banner.png")
 
+  gametest {
+    eula.set(true)
+  }
+
   modrinth {
     projectId.set("item-signs")
   }
